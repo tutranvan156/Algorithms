@@ -35,7 +35,7 @@ public class LongestIncreaseSubsequence {
         Arrays.fill(p, -1);
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < i ; j++) {
-                if (d[j] < d[i] && d[i] < d[j] + 1) {
+                if (nums[j] < nums[i] && d[i] < d[j] + 1) {
                     d[i] = d[j] + 1;
                     p[i] = j;
                 }
@@ -48,12 +48,17 @@ public class LongestIncreaseSubsequence {
                 pos = i;
             }
         }
-
-
+        Set<Integer> trace = new HashSet<>();
+        trace.add(nums[pos]);
+        while (p[pos] != -1) {
+            pos = p[pos];
+            trace.add(nums[pos]);
+        }
+        System.out.println(trace);
     }
 
     public static void main(String[] args) {
-        int[] a = {3, 4, 20, 1, 11, 21};
-        System.out.println(lengthOfLIS(a));
+        int[] a = {3, 4, 9, 1, 21, 6, 7 ,8};
+        showListIncrease(a);
     }
 }
