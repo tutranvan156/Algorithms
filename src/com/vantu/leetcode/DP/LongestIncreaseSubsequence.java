@@ -1,4 +1,4 @@
-package com.vantu.leetcode;
+package com.vantu.leetcode.DP;
 
 import java.util.*;
 

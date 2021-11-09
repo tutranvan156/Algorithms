@@ -1,4 +1,4 @@
-package com.vantu.leetcode;
+package com.vantu.leetcode.DP;
 
 /**
  * LongestSubString
@@ -28,6 +28,5 @@ public class LongestSubString {
     }
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("abccadfbadsfadf"));
-
     }
 }

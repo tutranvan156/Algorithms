@@ -1,4 +1,4 @@
-package com.vantu.leetcode;
+package com.vantu.leetcode.Math;
 
 import java.util.*;
 import java.util.stream.Collectors;
