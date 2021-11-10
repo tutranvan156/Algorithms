@@ -1,4 +1,4 @@
-package com.vantu.leetcode.DataStruct;
+package com.vantu.leetcode.DataStruct.LinkedList;
 
 /**
  * AddTwoNumber
@@ -8,13 +8,6 @@ package com.vantu.leetcode.DataStruct;
  * @desc: https://leetcode.com/problems/add-two-numbers/
  **/
 public class AddTwoNumber {
-    public class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dumpHead = new ListNode(0);
         ListNode p = l1, q = l2, current = dumpHead;

@@ -1,7 +1,5 @@
 package com.vantu.leetcode.DP;
 
-import java.util.Arrays;
-
 /**
  * LongestPalindromicSubstring
  *

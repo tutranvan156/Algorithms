@@ -2,7 +2,6 @@ package com.vantu.leetcode.Misc;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,9 +14,7 @@ import java.util.stream.Collectors;
  **/
 public class LetterCombinationPhoneNumber {
     public static List<String> letterCombinations(String digits) {
-        List<Integer> ints = Arrays.stream(digits.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> ints = Arrays.stream(digits.split("")).map(Integer::parseInt).collect(Collectors.toList());
         List<String> result = new ArrayList<>();
         String[][] a = new String[10][4];
         a[2] = new String[]{"a", "b", "c", ""};
@@ -28,9 +25,8 @@ public class LetterCombinationPhoneNumber {
         a[7] = new String[]{"p", "q", "r", "s"};
         a[8] = new String[]{"t", "u", "v", ""};
         a[9] = new String[]{"w", "x", "y", "z"};
-        for (int i = 0; i < 4; i++) {
-            for (int j = )
-        }
+
+
 
         return result;
     }
