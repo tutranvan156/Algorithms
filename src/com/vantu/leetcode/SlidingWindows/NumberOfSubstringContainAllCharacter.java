@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * NumberOfSubstringContainAllCharacter
+ * With this kind we should store it into array, this problem is not hard,
+ * but I can not think clear on this
  *
  * @author Tu Tran
  * @version NumberOfSubstringContainAllCharacter.java Nov 16 2021 14:14 tvtu
@@ -11,39 +13,22 @@ import java.util.Arrays;
  **/
 public class NumberOfSubstringContainAllCharacter {
     public static int numberOfSubstrings(String s) {
-        /**
-         * a = 97
-         * b = 98
-         * c = 99
-         */
+        int n = s.length();
         int[] a = new int[3];
-        Arrays.fill(a, 0);
-        int begin = 0, end = 1;
-
         int count = 0;
-        a[Character.getNumericValue(s.charAt(begin))]++;
-        while (end < s.length()) {
-            if (s. charAt(end) == s.charAt(begin)) {
-                a[Character.getNumericValue(s.charAt(end))]--;
-                begin++;
-            } else {
-                a[Character.getNumericValue(s.charAt(end))]++;
-            }
-            while (check(a)) {
-                a[Character.getNumericValue(s.charAt(end))]--;
-                begin++;
-                count++;
+        Arrays.fill(a, 0);
+        int begin = 0, end = 0;
+        while (end < n) {
+            a[(int) s.charAt(end) - 97]++;
+            while (a[0] > 0 && a[1] > 0 && a[2] > 0) {
+                count += n - end;
+                a[(int) s.charAt(begin++) - 97]--;
             }
             end++;
         }
+        return count;
     }
 
-    public static boolean check(int[] a) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == 0) return false;
-        }
-        return true;
-    }
     public static void main(String[] args) {
         System.out.println(numberOfSubstrings("abcacb"));
     }
