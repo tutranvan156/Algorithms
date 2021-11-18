@@ -1,5 +1,6 @@
 package com.vantu.leetcode.Recursion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,8 +11,29 @@ import java.util.List;
  * @desc: https://leetcode.com/problems/different-ways-to-add-parentheses/
  **/
 public class DifferentWayToAddParentheses {
+    public static int cal(char c, int x, int y) {
+        if (c == '*') {
+            return x * y;
+        } else if (c == '-') {
+            return x - y;
+        } else return x + y;
+    }
+
+    public static int DP(int[][] arr, int i, int j) {
+        if (i == j) {
+            return arr[i][j];
+        }
+        for (int u = i; u < j - 1; u++) {
+            for (int v = u + 1; v < j; v++) {
+                return DP(arr, i, u) + DP(arr, v, j);
+            }
+        }
+        return 0;
+    }
+
     public static List<Integer> diffWaysToCompute(String expression) {
         int n = expression.length();
+        List<Integer> result = new ArrayList<>();
         int[] nums = new int[20];
         char[] exp = new char[20];
         int tempNums = 0, tempExp = 0;
@@ -30,27 +52,21 @@ public class DifferentWayToAddParentheses {
         }
         for (int i = 0; i < tempExp - 1; i++) {
             for (int j = i + 1; j < tempExp; j++) {
-                arr[i][j] = arr[i][j] + arr[i][j - 1];
+                arr[i][j] = cal(exp[j], arr[i][j - 1], nums[j + 1]);
             }
         }
+        System.out.println(tempExp);
         for (int i = 0; i < tempExp; i++) {
-            System.out.println();
             for (int j = i + 1; j < tempExp; j++) {
-                System.out.print(arr[i][j] + " ");
+                int temp = DP(arr, i, j) + DP(arr, j + 1, tempExp - 1);
+                result.add(temp);
             }
         }
-
-        return null;
-    }
-    public static int cal(char c, int x, int y) {
-        if (c == '*') {
-            return x * y;
-        } else if (c == '-') {
-            return x - y;
-        } else return x + y;
+        System.out.println(result);
+        return result;
     }
 
     public static void main(String[] args) {
-        diffWaysToCompute("2-1-1");
+        diffWaysToCompute("2*3-4*5");
     }
 }

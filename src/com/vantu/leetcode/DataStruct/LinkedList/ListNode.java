@@ -19,7 +19,7 @@ public class ListNode {
         this.val = val;
         this.next = next;
     }
-    public ListNode convertToLinkedList(int[] arr) {
+    public static ListNode convertToLinkedList(int[] arr) {
 
         ListNode head = null;
         ListNode tail = null;
