@@ -9,35 +9,26 @@ package com.vantu.leetcode.SortAndSearch;
  **/
 public class SearchAndRotatedSortedArrays {
     public static int search(int[] nums, int target) {
-        int begin, end;
-        int n = nums.length;
-        if (target == nums[0] - 1) {
-            return -1;
-        }
-        if (target >= nums[0]) {
-            begin = 0;
-            end = n - nums[0];
-        } else {
-            begin = n - nums[0] + 1;
-            end = n - 1;
-        }
-        while (begin < end) {
-            int temp = (end + begin) / 2;
-            if (target == nums[temp]) {
-                return temp;
-            } else {
-                if (target < nums[temp]) {
-                    end = temp;
+        if(nums == null || nums.length == 0) return -1;
+        int lo = 0, hi = nums.length - 1;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (((nums[mid] - nums[nums.length - 1]) * (target - nums[nums.length - 1])) > 0) {
+                if (nums[mid] < target) {
+                    lo = mid + 1;
                 } else {
-                    begin = end;
+                    hi = mid;
                 }
+            } else if (target > nums[nums.length - 1]) {
+                hi = mid;
+            } else {
+                lo = mid + 1;
             }
         }
-        return -1;
+        return nums[lo] == target ? lo : -1;
     }
 
     public static void main(String[] args) {
-        System.out.println(search(new int[] {4,5,6,7,0,1,2} , 7));
-
+        System.out.println(search(new int[] {3, 1} , 3));
     }
 }
