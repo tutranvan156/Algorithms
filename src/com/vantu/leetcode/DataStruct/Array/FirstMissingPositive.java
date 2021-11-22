@@ -19,18 +19,18 @@ public class FirstMissingPositive {
         for (int i = 0; i < n; i++) {
             if (Math.abs(nums[i]) < n + 1) {
                 int num = Math.abs(nums[i]) - 1;
-                nums[num] = -1 * nums[num];
+                nums[num] = -1 * Math.abs(nums[num]);
             }
         }
         for (int i = 0; i < n; i++) {
-            if ((nums[i] <= (n + 1)) && nums[i] > 0)  {
-                return i + 1;
+            if ((nums[i] <= (n + 1)) && nums[i] > 0) {
+                return (i + 1);
             }
         }
-        return n;
+        return (n + 1);
     }
 
     public static void main(String[] args) {
-        System.out.println(firstMissingPositive(new int[]{3,4,-1,1}));
+        System.out.println(firstMissingPositive(new int[]{1, 1}));
     }
 }
